@@ -3,6 +3,8 @@ package router
 import (
 	"go-todolist/middleware"
 
+	dTablemiddleware "go-todolist/tableMiddelware"
+
 	"github.com/gorilla/mux"
 )
 
@@ -17,5 +19,7 @@ func Router() *mux.Router {
 	router.HandleFunc("/api/undoTask/{id}", middleware.UndoTask).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/deleteTask/{id}", middleware.DeleteTask).Methods("DELETE", "OPTIONS")
 	router.HandleFunc("/api/deleteAllTask", middleware.DeleteAllTask).Methods("DELETE", "OPTIONS")
+
+	router.HandleFunc("/api/tabletask", dTablemiddleware.GetAllTask).Methods("GET", "OPTIONS")
 	return router
 }
