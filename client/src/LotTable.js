@@ -7,7 +7,7 @@ class LotTable extends Component {
   constructor(pops) {
     super(pops);
     this.state = {
-      students: [],
+      students: [{}],
       //   students: [
       //     { id: 1, name: "Wasif", age: 21, email: "wasif@email.com" },
       //     { id: 2, name: "Ali", age: 19, email: "ali@email.com" },
@@ -37,20 +37,22 @@ class LotTable extends Component {
   };
 
   renderTableHeader() {
-    let header = Object.keys(this.state.students);
+    let header = Object.keys(this.state.students[0]);
     // Object.keys(this.state.students.keys);
 
     console.log(header);
-    // return header.map((key, index) => {
-    //   return <th key={index}>{key.toUpperCase()}</th>;
-    // });
+    return header.map((key, index) => {
+      return <th key={index}>{key.toUpperCase()}</th>;
+    });
   }
 
   renderTableData() {
     return this.state.students.map((student, index) => {
-      const { lot_id, eqp_id, foup_id, reticle_id, reticlepod_id } = student;
+      const { _id, lot_id, eqp_id, foup_id, reticle_id, reticlepod_id } =
+        student;
       return (
         <tr key={lot_id}>
+          <td>{_id}</td>
           <td>{lot_id}</td>
           <td>{eqp_id}</td>
           <td>{foup_id}</td>
